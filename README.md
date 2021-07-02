@@ -4,7 +4,7 @@
 
 
 ## How to import
-- Add this in your root build.gradle at the end of repositories:
+- Add this in your root `build.gradle` at the end of repositories:
   ```
   allprojects {
       repositories {
@@ -13,7 +13,7 @@
       }
   }
    ```
-- And add a dependency code to your  app module's  `build.gradle`  file. 
+- And add a dependency code to your app module's `build.gradle` file. 
   ```  
   implementation 'com.github.EspressifApp:lib-blufi-android:2.3.4'
   ```
