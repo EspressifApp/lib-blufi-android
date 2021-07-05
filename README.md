@@ -18,5 +18,8 @@
   implementation 'com.github.EspressifApp:lib-blufi-android:2.3.4'
   ```
 
+## ESPRSSIF MIT License
+- See [License](ESPRESSIF_MIT_LICENSE)
+
 ## Example
 - [EspBlufiForAndroid](https://github.com/EspressifApp/EspBlufiForAndroid)
