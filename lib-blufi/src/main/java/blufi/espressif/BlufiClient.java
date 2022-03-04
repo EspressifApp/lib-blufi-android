@@ -54,6 +54,11 @@ public class BlufiClient {
     }
 
     /**
+     * Disconnect the client
+     */
+    public void disconnect(){mImpl.disconnect();}
+
+    /**
      * Close the client
      */
     public void close() {
