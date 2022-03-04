@@ -137,6 +137,13 @@ class BlufiClientImpl implements BlufiParameter {
         }
     }
 
+    synchronized void disconnect() {
+        if (mGatt != null) {
+            mGatt.disconnect();
+        }
+        close();
+    }
+
     synchronized void close() {
         mConnectState = BluetoothGatt.STATE_DISCONNECTED;
         synchronized (mWriteLock) {
