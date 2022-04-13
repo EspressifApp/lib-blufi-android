@@ -3,24 +3,21 @@ plugins {
     id 'com.github.dcendents.android-maven' version '2.1'
 }
 
+final def libVersion = "2.3.5"
+
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 30
-        versionCode 12
-        versionName "2.3.4"
+        targetSdkVersion 31
+
+        buildConfigField "String", "VERSION_NAME", "\"${libVersion}\""
     }
     buildTypes {
-        debug {
-            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            buildConfigField "String", "VERSION_NAME", "\"${defaultConfig.versionName}\""
         }
     }
     compileOptions {
