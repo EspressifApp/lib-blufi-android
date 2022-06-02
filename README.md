@@ -15,7 +15,7 @@
    ```
 - And add a dependency code to your app module's `build.gradle` file. 
   ```  
-  implementation 'com.github.EspressifApp:lib-blufi-android:2.3.5'
+  implementation 'com.github.EspressifApp:lib-blufi-android:2.3.6'
   ```
 
 ## ESPRSSIF MIT License
