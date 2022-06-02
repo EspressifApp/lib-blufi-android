@@ -18,11 +18,11 @@ import javax.crypto.spec.DHParameterSpec;
 import javax.crypto.spec.DHPublicKeySpec;
 
 public class BlufiDH {
-    private BigInteger mP;
-    private BigInteger mG;
+    private final BigInteger mP;
+    private final BigInteger mG;
 
-    private DHPrivateKey mPrivateKey;
-    private DHPublicKey mPublicKey;
+    private final DHPrivateKey mPrivateKey;
+    private final DHPublicKey mPublicKey;
 
     private byte[] mSecretKey;
 

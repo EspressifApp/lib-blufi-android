@@ -3,7 +3,7 @@ package blufi.espressif.response;
 import java.util.Locale;
 
 public class BlufiVersionResponse {
-    private int[] mVersionValues = {0, 0};
+    private final int[] mVersionValues = {0, 0};
 
     public void setVersionValues(int bigVer, int smallVer) {
         mVersionValues[0] = bigVer;

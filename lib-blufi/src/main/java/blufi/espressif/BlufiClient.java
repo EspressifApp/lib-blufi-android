@@ -13,10 +13,19 @@ import blufi.espressif.response.BlufiVersionResponse;
 public class BlufiClient {
     public static final String VERSION = BuildConfig.VERSION_NAME;
 
-    private BlufiClientImpl mImpl;
+    private final BlufiClientImpl mImpl;
 
     public BlufiClient(Context context, BluetoothDevice device) {
         mImpl = new BlufiClientImpl(this, context, device);
+    }
+
+    /**
+     * Enable or disable print debug log in BlufiClient
+     *
+     * @param enable true will print debug log and false will not
+     */
+    public void printDebugLog(boolean enable) {
+        mImpl.printDebugLog(enable);
     }
 
     /**

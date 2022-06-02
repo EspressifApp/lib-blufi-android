@@ -9,7 +9,7 @@ class BlufiNotifyData {
 
     private int mFrameCtrlValue;
 
-    private ByteArrayOutputStream mDataOS;
+    private final ByteArrayOutputStream mDataOS;
 
     BlufiNotifyData() {
         mDataOS = new ByteArrayOutputStream();

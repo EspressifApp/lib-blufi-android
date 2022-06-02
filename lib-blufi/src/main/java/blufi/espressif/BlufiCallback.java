@@ -76,6 +76,7 @@ public abstract class BlufiCallback {
     /**
      * @deprecated use {@link #onPostConfigureParams(BlufiClient, int)}
      */
+    @Deprecated
     public void onConfigureResult(BlufiClient client, int status) {
     }
 

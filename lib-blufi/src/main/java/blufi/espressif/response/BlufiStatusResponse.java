@@ -12,7 +12,7 @@ public class BlufiStatusResponse {
     private String mSoftAPPassword = null;
     private String mSoftAPSSID = null;
 
-    private int mStaConnecionStatus = -1;
+    private int mStaConnectionStatus = -1;
     private String mStaBSSID = null;
     private String mStaSSID = null;
     private String mStaPassword = null;
@@ -74,15 +74,15 @@ public class BlufiStatusResponse {
     }
 
     public int getStaConnectionStatus() {
-        return mStaConnecionStatus;
+        return mStaConnectionStatus;
     }
 
     public boolean isStaConnectWifi() {
-        return mStaConnecionStatus == 0;
+        return mStaConnectionStatus == 0;
     }
 
     public void setStaConnectionStatus(int status) {
-        mStaConnecionStatus = status;
+        mStaConnectionStatus = status;
     }
 
     public String getStaBSSID() {

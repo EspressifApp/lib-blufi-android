@@ -1,18 +1,18 @@
 plugins {
     id 'com.android.library'
-    id 'com.github.dcendents.android-maven' version '2.1'
+    id 'maven-publish'
 }
 
-final def libVersion = "2.3.5"
+def libVersion = "2.3.6"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         minSdkVersion 18
-        targetSdkVersion 31
+        targetSdkVersion 32
 
-        buildConfigField "String", "VERSION_NAME", "\"${libVersion}\""
+        buildConfigField "String", "VERSION_NAME", "\"$libVersion\""
     }
     buildTypes {
         release {
@@ -28,4 +28,16 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                from components.release
+            }
+        }
+    }
 }

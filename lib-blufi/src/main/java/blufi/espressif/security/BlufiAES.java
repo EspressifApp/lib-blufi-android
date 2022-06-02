@@ -15,8 +15,8 @@ public class BlufiAES {
     private final byte[] mKey;
     private final byte[] mIV;
     private final String mTransformation;
-    private Cipher mEncryptCipher;
-    private Cipher mDecryptCipher;
+    private final Cipher mEncryptCipher;
+    private final Cipher mDecryptCipher;
 
     public BlufiAES(byte[] key, String transformation, byte[] iv) {
         mKey = key;
