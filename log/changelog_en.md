@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.3.5
+## 2.3.6
 - Update `targetSdkVersion` to 32
 - Update gradle version
 - Change `sourceCompatibility` to `JavaVersion.VERSION_1_8`

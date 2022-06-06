@@ -1,6 +1,6 @@
 # 修改记录
 
-## 2.3.5
+## 2.3.6
 - `targetSdkVersion` 更新至 32
 - 更新 gradle 版本
 - `sourceCompatibility` 修改为 `JavaVersion.VERSION_1_8`
