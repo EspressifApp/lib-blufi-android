@@ -1,7 +1,8 @@
 # lib-blufi-android
 
 [![](https://jitpack.io/v/EspressifApp/lib-blufi-android.svg)](https://jitpack.io/#EspressifApp/lib-blufi-android)
-
+  
+This respsitory is just used to publish lib to JitPack.
 
 ## How to import
 - Add this in your root `build.gradle` at the end of repositories:
