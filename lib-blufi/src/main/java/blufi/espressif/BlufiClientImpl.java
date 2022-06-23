@@ -26,9 +26,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
 
 import javax.crypto.interfaces.DHPublicKey;
 
@@ -72,9 +71,9 @@ class BlufiClientImpl implements BlufiParameter {
 
     private BluetoothGatt mGatt;
     private BluetoothGattCharacteristic mWriteChar;
-    private final Lock mWriteLock;
     private final LinkedBlockingQueue<Boolean> mWriteResultQueue;
     private BluetoothGattCharacteristic mNotifyChar;
+    private long mWriteTimeout = -1;
 
     private int mPackageLengthLimit = -1;
     private int mBlufiMTU = -1;
@@ -116,7 +115,6 @@ class BlufiClientImpl implements BlufiParameter {
         mThreadPool = Executors.newSingleThreadExecutor();
         mUIHandler = new Handler(Looper.getMainLooper());
 
-        mWriteLock = new ReentrantLock(true);
         mWriteResultQueue = new LinkedBlockingQueue<>();
     }
 
@@ -146,9 +144,7 @@ class BlufiClientImpl implements BlufiParameter {
 
     synchronized void close() {
         mConnectState = BluetoothGatt.STATE_DISCONNECTED;
-        synchronized (mWriteLock) {
-            mWriteLock.notifyAll();
-        }
+
         mWriteResultQueue.clear();
         if (mThreadPool != null) {
             mThreadPool.shutdownNow();
@@ -170,6 +166,10 @@ class BlufiClientImpl implements BlufiParameter {
         mUserGattCallback = null;
         mContext = null;
         mDevice = null;
+    }
+
+    void setGattWriteTimeout(long timeout) {
+        mWriteTimeout = timeout;
     }
 
     void setPostPackageLengthLimit(int lengthLimit) {
@@ -299,21 +299,24 @@ class BlufiClientImpl implements BlufiParameter {
     }
 
     private boolean gattWrite(byte[] data) throws InterruptedException {
-        mWriteLock.lock();
-        try {
-            if (!isConnected()) {
-                return false;
-            }
-            if (mPrintDebug) {
-                Log.i(TAG, "gattWrite= " + Arrays.toString(data));
-            }
-            mWriteChar.setValue(data);
-            mGatt.writeCharacteristic(mWriteChar);
-            Boolean result = mWriteResultQueue.take();
-            return result != null && result;
-        } finally {
-            mWriteLock.unlock();
+        if (!isConnected()) {
+            return false;
         }
+        if (mPrintDebug) {
+            Log.i(TAG, "gattWrite= " + Arrays.toString(data));
+        }
+        mWriteChar.setValue(data);
+        mGatt.writeCharacteristic(mWriteChar);
+        Boolean result;
+        if (mWriteTimeout > 0) {
+            result = mWriteResultQueue.poll(mWriteTimeout, TimeUnit.MILLISECONDS);
+            if (result == null) {
+                onError(BlufiCallback.CODE_GATT_WRITE_TIMEOUT);
+            }
+        } else {
+            result = mWriteResultQueue.take();
+        }
+        return result != null && result;
     }
 
     private boolean receiveAck(int expectAck) {

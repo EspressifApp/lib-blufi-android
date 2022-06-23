@@ -56,6 +56,17 @@ public class BlufiClient {
     }
 
     /**
+     * Set gatt write timeout.
+     * If timeout, {@link BlufiCallback#onError(BlufiClient, int)} will be invoked,
+     * the errCode is {@link BlufiCallback#CODE_GATT_WRITE_TIMEOUT}
+     *
+     * @param timeout in milliseconds
+     */
+    public void setGattWriteTimeout(long timeout) {
+        mImpl.setGattWriteTimeout(timeout);
+    }
+
+    /**
      * Establish a BLE connection with BluetoothDevice
      */
     public void connect() {
