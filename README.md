@@ -16,7 +16,7 @@ This respsitory is just used to publish lib to JitPack.
    ```
 - And add a dependency code to your app module's `build.gradle` file. 
   ```  
-  implementation 'com.github.EspressifApp:lib-blufi-android:2.3.6'
+  implementation 'com.github.EspressifApp:lib-blufi-android:2.3.7'
   ```
 
 ## ESPRSSIF MIT License
