@@ -1,6 +1,9 @@
 # Change Log
 [中文](changelog_zh.md)
 
+## 2.4.0
+- Fix: DH secret key which leading zero bits
+
 ## 2.3.7
 - Add gatt write timeout interface in `BlufiClient`
   ```java
