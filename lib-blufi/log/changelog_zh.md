@@ -1,9 +1,6 @@
 # 修改记录
 [English](changelog_en.md)
 
-### 2.4.1
-- 修复发布库至 jitpack
-
 ## 2.4.0
 - 修复 DH secret 的生成
 
