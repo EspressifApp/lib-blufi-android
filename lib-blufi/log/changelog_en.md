@@ -1,6 +1,9 @@
 # Change Log
 [中文](changelog_zh.md)
 
+### 2.4.1
+- Fix publishing to JitPack
+
 ## 2.4.0
 - Fix: DH secret key which leading zero bits
 
