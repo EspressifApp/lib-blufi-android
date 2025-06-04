@@ -39,7 +39,7 @@ afterEvaluate {
         publications {
             release(MavenPublication) {
 //                artifactId = 'lib-blufi-android'
-                from components.findByName('android')
+                from components.findByName('release')
             }
         }
     }
