@@ -38,11 +38,8 @@ afterEvaluate {
     publishing {
         publications {
             release(MavenPublication) {
-                from components.findByName('release')
-
-                groupId = 'com.github.EspressifApp'
-                artifactId = 'lib-blufi-android'
-                version = libVersion
+//                artifactId = 'lib-blufi-android'
+                from components.findByName('android')
             }
         }
     }
