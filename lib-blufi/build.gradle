@@ -1,16 +1,17 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
+//    id 'maven-publish'
 }
 
 def libVersion = "2.4.0"
 
 android {
-    compileSdkVersion 32
+    compileSdk 34
 
+    namespace 'blufi.espressif'
     defaultConfig {
-        minSdkVersion 18
-        targetSdkVersion 32
+        minSdk 18
+        targetSdk 34
 
         buildConfigField "String", "VERSION_NAME", "\"$libVersion\""
     }
@@ -19,6 +20,9 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    buildFeatures {
+        buildConfig true
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -30,14 +34,14 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "release".
-            release(MavenPublication) {
-                // Applies the component for the release build variant.
-                from components.release
-            }
-        }
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "release".
+//            release(MavenPublication) {
+//                // Applies the component for the release build variant.
+//                from components.release
+//            }
+//        }
+//    }
+//}
