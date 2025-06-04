@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-def libVersion = "2.4.0"
+def libVersion = "2.4.0-t5"
 
 android {
     compileSdk 34
@@ -34,14 +34,16 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            // Creates a Maven publication called "release".
-//            release(MavenPublication) {
-//                // Applies the component for the release build variant.
-//                from components.release
-//            }
-//        }
-//    }
-//}
+afterEvaluate {
+    publishing {
+        publications {
+
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                // Applies the component for the release build variant.
+                group = 'com.github.EspressifApp'
+                version = libVersion
+            }
+        }
+    }
+}
