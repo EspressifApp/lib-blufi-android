@@ -28,6 +28,13 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 dependencies {
@@ -37,9 +44,8 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            productionRelease(MavenPublication) {
-//                artifactId = 'lib-blufi-android'
-                from components.findByName('productionRelease')
+            release(MavenPublication) {
+                from components.findByName('release')
             }
         }
     }
