@@ -34,16 +34,18 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 }
 
-publishing {
-    publications {
-        release(MavenPublication) {
-            groupId = 'com.github.EspressifApp'
-            artifactId = 'lib-blufi-android'
-            version = libVersion
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.findByName('release')
 
-            afterEvaluate {
-                from components.findByName("release")
+                groupId = 'com.github.EspressifApp'
+                artifactId = 'lib-blufi-android'
+                version = libVersion
             }
         }
     }
 }
+
+
