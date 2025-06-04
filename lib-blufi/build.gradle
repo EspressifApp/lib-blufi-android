@@ -37,9 +37,9 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
+            productionRelease(MavenPublication) {
 //                artifactId = 'lib-blufi-android'
-                from components.findByName('release')
+                from components.findByName('productionRelease')
             }
         }
     }
